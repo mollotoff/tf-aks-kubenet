@@ -56,14 +56,14 @@ resource "azurerm_kubernetes_cluster" "aks" {
         enabled = true
     }
 
-    tags {
+    tags = {
         Environment = "Development"
     }
 
     provisioner "local-exec" {
         command = "./helm-install.sh"
 
-        environment {
+        environment = {
             AKS_NAME = "${var.cluster_name}"
             AKS_RG   = "${var.resource_group_name}"
         }
